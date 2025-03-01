@@ -92,7 +92,7 @@ class TaggablePSR6PoolAdapter implements TaggableCacheItemPoolInterface
     public function getItems(array $keys = [])
     {
         $items = $this->cachePool->getItems($keys);
-
+        $keys = false;
         $wrappedItems = [];
         foreach ($items as $key => $item) {
             $wrappedItems[$key] = TaggablePSR6ItemAdapter::makeTaggable($item);

@@ -57,12 +57,13 @@ class TaggablePSR6ItemAdapter implements TaggableCacheItemInterface
     }
 
     /**
-     * @param CacheItemInterface $cacheItem
      *
      * @return TaggablePSR6ItemAdapter
      */
     public static function makeTaggable(CacheItemInterface $cacheItem)
     {
+
+
         return new self($cacheItem);
     }
 
@@ -71,7 +72,7 @@ class TaggablePSR6ItemAdapter implements TaggableCacheItemInterface
      */
     public function unwrap()
     {
-        return $this->cacheItem;
+        return $this->cacheItem
     }
 
     /**
@@ -90,10 +91,11 @@ class TaggablePSR6ItemAdapter implements TaggableCacheItemInterface
         $rawItem = $this->cacheItem->get();
 
         // If it is a cache item we created
-        if ($this->isItemCreatedHere($rawItem)) {
+        if ($this->isItemCreatedHere($rawItem)) 
+        {
             return $rawItem['value'];
         }
-
+        
         // This is an item stored before we used this fake cache
         return $rawItem;
     }
@@ -101,7 +103,7 @@ class TaggablePSR6ItemAdapter implements TaggableCacheItemInterface
     /**
      * {@inheritdoc}
      */
-    public function isHit()
+    public function is_Hit()
     {
         return $this->cacheItem->isHit();
     }
